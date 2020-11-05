@@ -1,3 +1,6 @@
 [submodule "zgen"]
 	path = zgen
 	url = https://github.com/tarjoilija/zgen.git
+[submodule "ls_colors"]
+	path = LS_COLORS
+	url = https://github.com/trapd00r/LS_COLORS
