@@ -11,7 +11,7 @@ source "${ZGEN_DIR}/zgen.zsh"
 if ! zgen saved; then
     zgen prezto editor key-bindings 'emacs'
     zgen prezto prompt theme 'powerlevel10k'
-    zgen prezto git 'alias:skip' 'yes'
+    zgen prezto 'git:alias' skip 'yes'
 
     zgen prezto
     zgen prezto git
