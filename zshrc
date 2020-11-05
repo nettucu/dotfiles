@@ -27,6 +27,8 @@ if ! zgen saved; then
 fi
 
 # Customize to your needs...
+eval $( dircolors ~/.dotfiles/LS_COLORS/LS_COLORS )
+alias ls='ls --group-directories-first --color=auto -F'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
