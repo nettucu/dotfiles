@@ -26,9 +26,14 @@ if ! zgen saved; then
     esac
 fi
 
-# Customize to your needs...
+# dircolors
 eval $( dircolors ~/.dotfiles/LS_COLORS/LS_COLORS )
 alias ls='ls --group-directories-first --color=auto -F'
+
+# XDG Specification
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-${HOME}/.config}
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:-${HOME}/.cache}
+export XDG_DATA_HOME=${XDG_DATA_HOME:-${HOME}/.local/share}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
