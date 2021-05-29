@@ -83,6 +83,9 @@ let g:UltiSnipsJumpForwardTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<C-x>"
 " }}}
 
+Plug 'davidhalter/jedi-vim' " {{{
+" }}}
+
 call plug#end()
 " }}}
 
