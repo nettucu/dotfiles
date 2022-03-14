@@ -83,6 +83,8 @@ let g:UltiSnipsJumpForwardTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<C-x>"
 " }}}
 
+""" Python specific
+Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi-vim' " {{{
 " }}}
 

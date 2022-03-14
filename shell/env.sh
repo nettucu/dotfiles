@@ -23,3 +23,6 @@ export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
 
 # bat = cat replacement
 export BAT_PAGER="less -R"
+
+# CHROOT for AUR
+export CHROOT=/home/catalin/work/arch/chroot
