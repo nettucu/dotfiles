@@ -128,3 +128,5 @@
   path = .gitconfig.user
 [difftool]
 	prompt = false
+[status]
+	submoduleSummary = true
