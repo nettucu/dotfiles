@@ -23,6 +23,12 @@ if ! zgen saved; then
     zgen prezto syntax-highlighting
     zgen prezto utility
     zgen prezto completion
+    zgen prezto docker
+    zgen prezto python skip-virtualenvwrapper-init 'on'
+    zgen prezto conda-init 'on'
+    zgen prezto python
+    zgen prezto ssh 'id_rsa' 'id_dsa' 'id_rsa_github_ctrifu' 'id_rsa_dentrix.ro'
+    zgen prezto ssh
     osrel="$( cat /etc/os-release | grep '^ID=' | cut -d'=' -f2 )"
     case ${osrel} in
         arch) zgen prezto pacman ;;
@@ -40,6 +46,10 @@ _dotnet_zsh_complete()
 
   reply=( "${(ps:\n:)completions}" )
 }
+
+if [[ -f /opt/google-cloud-sdk/completion.zsh.inc ]]; then
+  source /opt/google-cloud-sdk/completion.zsh.inc
+fi
 
 compctl -K _dotnet_zsh_complete dotnet
 
