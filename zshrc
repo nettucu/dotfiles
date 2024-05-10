@@ -25,7 +25,7 @@ if ! zgen saved; then
     zgen prezto completion
     zgen prezto docker
     zgen prezto python skip-virtualenvwrapper-init 'on'
-    zgen prezto conda-init 'on'
+    zgen prezto conda-init 'off'
     zgen prezto python
     zgen prezto ssh 'id_rsa' 'id_dsa' 'id_rsa_github_ctrifu' 'id_rsa_dentrix.ro'
     zgen prezto ssh
@@ -39,6 +39,11 @@ fi
 source ~/.dotfiles/shell/aliases.sh
 
 source ~/.dotfiles/shell/path.sh
+
+# source Node.js nvm stuff if needed
+if [[ -r /usr/share/nvm/init-nvm.sh ]]; then
+    source /usr/share/nvm/init-nvm.sh
+fi
 
 _dotnet_zsh_complete()
 {
