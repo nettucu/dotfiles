@@ -34,6 +34,8 @@ if ! zgen saved; then
         arch) zgen prezto pacman ;;
         fedora) zgen prezto dnf ;;
     esac
+
+    zgen save
 fi
 
 source ~/.dotfiles/shell/aliases.sh
