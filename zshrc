@@ -54,8 +54,8 @@ _dotnet_zsh_complete()
   reply=( "${(ps:\n:)completions}" )
 }
 
-if [[ -f /opt/google-cloud-sdk/completion.zsh.inc ]]; then
-  source /opt/google-cloud-sdk/completion.zsh.inc
+if [[ -f /opt/google-cloud-cli/completion.zsh.inc ]]; then
+    source /opt/google-cloud-cli/completion.zsh.inc
 fi
 
 compctl -K _dotnet_zsh_complete dotnet

@@ -8,4 +8,6 @@ for d in $( \find /opt/scripts -type f -executable ! \( -path '**/.git/*' -o -pa
 done
 export PATH
 
-source /opt/google-cloud-sdk/path.zsh.inc
+if [[ -f /opt/google-cloud-cli/path.zsh.inc ]]; then
+    source /opt/google-cloud-cli/path.zsh.inc
+fi
