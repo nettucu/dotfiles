@@ -28,7 +28,7 @@ export BAT_PAGER="less -R"
 export CHROOT=/home/catalin/work/arch/chroot
 
 # FIX for missing VAAPI driver
-export LIBVA_DRIVER_NAME=vdpau
+# export LIBVA_DRIVER_NAME=vdpau
 
 # ansible python argcomplete
 eval $(register-python-argcomplete ansible)
