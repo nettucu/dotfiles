@@ -11,6 +11,3 @@
 	path = .dotbot
 	url = https://github.com/anishathalye/dotbot.git
 	ignore = dirty
-[submodule "kitty-themes"]
-	path = kitty-themes
-	url = https://github.com/dexpota/kitty-themes.git
