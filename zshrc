@@ -1,3 +1,4 @@
+# vim: ft=zsh sw=4 exapandtab
 source ~/.dotfiles/shell/functions.sh
 
 source ~/.dotfiles/shell/env.sh
@@ -68,3 +69,10 @@ compctl -K _dotnet_zsh_complete dotnet
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 eval "$( starship init zsh )"
+
+if test -n "$KITTY_INSTALLATION_DIR"; then
+    export KITTY_SHELL_INTEGRATION="enabled"
+    autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
+    kitty-integration
+    unfunction kitty-integration
+fi

@@ -1,0 +1,46 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+format = "$username$hostname$directory$git_branch$python$time$cmd_duration$nix_shell$character"
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = false
+
+[line_break]
+disabled = true
+
+# Replace the '❯' symbol in the prompt with '➜'
+[character] # The name of the module we are configuring is 'character'
+success_symbol = "[➜](bold green) " # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+error_symbol = "[✗](bold red) "
+
+[directory]
+fish_style_pwd_dir_length = 3
+truncation_length = 5
+truncation_symbol = '.../'
+read_only = " 󰌾"
+format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) '
+
+
+[hostname]
+trim_at = '.'
+ssh_symbol = '🌏 '
+
+[time]
+disabled = false
+
+[username]
+format = '[$user]($style)@'
+show_always = true
+style_root = "red bold"
+style_user = "yellow bold"
+
+[directory.substitutions]
+"Documents" = "󰈙"
+"Downloads" = "󰇚"
+
+[cmd_duration]
+format = '\[[󰔛 $duration]($style)\]'

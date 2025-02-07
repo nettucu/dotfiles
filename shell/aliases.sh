@@ -21,4 +21,5 @@ command -v bat >/dev/null 2>&1 && alias cat='bat'
 if [[ "$TERM" = "xterm-kitty" ]]; then
   alias d="kitten diff"
   alias ssh="kitty +kitten ssh"
+  alias icat="kitty +kitten icat"
 fi
