@@ -2,6 +2,7 @@ classic: false
 
 blocks:
   - permission
+  - links
   - user
   - group
   - size

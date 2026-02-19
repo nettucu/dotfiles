@@ -1,4 +1,4 @@
-# vim: ft=zsh sw=4 exapandtab
+# vim: ft=zsh sw=4
 source ~/.dotfiles/shell/functions.sh
 
 source ~/.dotfiles/shell/env.sh
@@ -76,3 +76,21 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
     kitty-integration
     unfunction kitty-integration
 fi
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/catalin/.config/.dart-cli-completion/zsh-config.zsh ]] && . /home/catalin/.config/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/catalin/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+# opencode
+export PATH=/home/catalin/.opencode/bin:$PATH
+
+# clawdock
+# source ~/.clawdock/clawdock-helpers.sh
+# export CLAWDOCK_DIR=/home/catalin/work/openclaw

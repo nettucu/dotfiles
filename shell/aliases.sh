@@ -9,6 +9,16 @@ alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
+alias targetcli='sudo docker run --rm -it \
+  --privileged \
+  --net=host \
+  -v /dev:/dev \
+  -v /sys/kernel/config:/sys/kernel/config \
+  -v /lib/modules:/lib/modules:ro \
+  -v /run:/run \
+  -v /opt/iscsi-manager/config:/etc/rtslib-fb-target \
+  -v /opt/iscsi-manager/prefs:/root/.targetcli \
+  local/targetcli:stable'
 
 # replace cat with bat if installed
 command -v bat >/dev/null 2>&1 && alias cat='bat'
