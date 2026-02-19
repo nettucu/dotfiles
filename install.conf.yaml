@@ -1,12 +1,18 @@
 - defaults:
     link:
-        create: true
-        relink: true
+      create: true
+      relink: true
 
-- clean: ['~', '~/.config']
+- clean: ["~", "~/.config"]
 
 - shell:
-    - [git submodule update --init --recursive, Installing submodules, false, false, true]
+    - [
+        git submodule update --init --recursive,
+        Installing submodules,
+        false,
+        false,
+        true,
+      ]
 
 - link:
     ~/.gitconfig: gitconfig
@@ -19,6 +25,7 @@
     # ~/.config/nvim/init.vim: nvim/init.vim
     # ~/.local/share/nvim/site/autoload/plug.vim: nvim/vim-plug/plug.vim
     ~/.config/bat/config: bat-config
+    ~/.config/starship.toml: starship.toml
     # ~/.config/flexget/config.yml: flexget/config.yml
     ~/.config/kitty/kitty.conf: kitty.conf
     ~/.config/kitty/theme.conf: kitty-themes/themes/Solarized_Dark.conf
