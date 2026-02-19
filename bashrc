@@ -60,3 +60,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:/home/catalin/.lmstudio/bin"
 # End of LM Studio CLI section
 
+if [[ -f "${HOME}/.local/bin/env" ]]; then
+    source "${HOME}/.local/bin/env"
+fi

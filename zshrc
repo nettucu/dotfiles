@@ -94,3 +94,7 @@ export PATH=/home/catalin/.opencode/bin:$PATH
 # clawdock
 # source ~/.clawdock/clawdock-helpers.sh
 # export CLAWDOCK_DIR=/home/catalin/work/openclaw
+
+if [[ -f ${HOME}/.local/bin/env ]]; then
+    source "${HOME}/.local/bin/env"
+fi
