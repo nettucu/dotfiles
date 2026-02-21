@@ -1,0 +1,47 @@
+
+#
+# Init
+#
+
+mattmc3/zephyr path:plugins/environment
+mattmc3/zephyr path:plugins/homebrew conditional:is-macos
+
+#
+# History
+#
+
+mattmc3/zephyr path:plugins/history
+larkery/zsh-histdb
+
+#
+# Completions
+#
+
+mattmc3/ez-compinit
+zsh-users/zsh-completions kind:fpath path:src
+
+#
+# Clipboard
+#
+
+ohmyzsh/ohmyzsh path:lib/clipboard.zsh
+ohmyzsh/ohmyzsh path:plugins/copypath
+ohmyzsh/ohmyzsh path:plugins/copybuffer
+ohmyzsh/ohmyzsh path:plugins/copyfile
+
+#
+# Prezto modules (Antidote handles these easily)
+#
+
+sorin-ionescu/prezto
+sorin-ionescu/prezto path:modules/editor
+sorin-ionescu/prezto path:modules/git
+sorin-ionescu/prezto path:modules/command-not-found
+sorin-ionescu/prezto path:modules/syntax-highlighting
+sorin-ionescu/prezto path:modules/utility
+sorin-ionescu/prezto path:modules/completion
+sorin-ionescu/prezto path:modules/docker
+sorin-ionescu/prezto path:modules/python
+sorin-ionescu/prezto path:modules/ssh
+
+# vi: ft=properties

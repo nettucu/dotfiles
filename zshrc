@@ -3,10 +3,6 @@ source ~/.dotfiles/shell/functions.sh
 
 source ~/.dotfiles/shell/env.sh
 
-# eval "$( starship init zsh )"
-
-# return
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -14,34 +10,24 @@ source ~/.dotfiles/shell/env.sh
   # source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
 
-export ZGEN_DIR=~/.dotfiles/zgen
-source "${ZGEN_DIR}/zgen.zsh"
+export ANTIDOTE_HOME=~/.dotfiles/antidote
+source "${ANTIDOTE_HOME}/antidote.zsh"
 
-if ! zgen saved; then
-    zgen prezto editor key-bindings 'emacs'
-    # zgen prezto prompt theme 'powerlevel10k'
-    zgen prezto 'git:alias' skip 'yes'
+zstyle ':antidote:bundle' use-friendly-names 'yes'
 
-    zgen prezto
-    zgen prezto git
-    zgen prezto command-not-found
-    zgen prezto syntax-highlighting
-    zgen prezto utility
-    zgen prezto completion
-    zgen prezto docker
-    zgen prezto python skip-virtualenvwrapper-init 'on'
-    zgen prezto conda-init 'off'
-    zgen prezto python
-    zgen prezto ssh 'id_rsa' 'id_dsa' 'id_rsa_github_ctrifu' 'id_rsa_dentrix.ro'
-    zgen prezto ssh
-    osrel="$( cat /etc/os-release | grep '^ID=' | cut -d'=' -f2 )"
-    case ${osrel} in
-        arch) zgen prezto pacman ;;
-        fedora) zgen prezto dnf ;;
-    esac
+zstyle ':prezto:module:editor' key-bindings 'emacs'
+zstyle ':prezto:module:git:alias' skip 'yes'
+zstyle ':prezto:module:python:virtualenv' initialize 'off'
+zstyle ':prezto:module:python:conda' initialize 'off'
+zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_dsa' 'id_rsa_github_ctrifu' 'id_rsa_dentrix.ro' 'id_ed25519_github_ctrifu'
 
-    zgen save
-fi
+antidote load ${HOME}/.dotfiles/zsh_plugins.txt
+
+osrel="$( cat /etc/os-release | grep '^ID=' | cut -d'=' -f2 )"
+case ${osrel} in
+    arch)   eval "$(antidote bundle sorin-ionescu/prezto path:modules/pacman)" ;;
+    fedora) eval "$(antidote bundle sorin-ionescu/prezto path:modules/dnf)" ;;
+esac
 
 source ~/.dotfiles/shell/aliases.sh
 
@@ -54,9 +40,9 @@ fi
 
 _dotnet_zsh_complete()
 {
-  local completions=("$(dotnet complete "$words")")
+    local completions=("$(dotnet complete "$words")")
 
-  reply=( "${(ps:\n:)completions}" )
+    reply=( "${(ps:\n:)completions}" )
 }
 
 if [[ -f /opt/google-cloud-cli/completion.zsh.inc ]]; then
