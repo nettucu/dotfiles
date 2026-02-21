@@ -22,8 +22,6 @@
     ~/.zshrc: zshrc
     ~/.inputrc: inputrc
     ~/.config/nvim: nvim/lazyvim
-    # ~/.config/nvim/init.vim: nvim/init.vim
-    # ~/.local/share/nvim/site/autoload/plug.vim: nvim/vim-plug/plug.vim
     ~/.config/bat/config: bat-config
     ~/.config/starship.toml: starship.toml
     # ~/.config/flexget/config.yml: flexget/config.yml
