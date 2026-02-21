@@ -84,3 +84,7 @@ export PATH=/home/catalin/.opencode/bin:$PATH
 if [[ -f ${HOME}/.local/bin/env ]]; then
     source "${HOME}/.local/bin/env"
 fi
+
+if command -v fnm >/dev/null 2>/dev/null; then
+    eval "$(fnm env --use-on-cd --shell zsh)"
+fi
