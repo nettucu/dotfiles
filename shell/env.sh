@@ -7,8 +7,37 @@ export XDG_DATA_HOME=${XDG_DATA_HOME:-${HOME}/.local/share}
 command -v nvim >/dev/null 2>&1 && export EDITOR="nvim" || export EDITOR="vim"
 export VISUAL="${EDITOR}"
 
-# dircolors
-eval $( dircolors ~/.dotfiles/LS_COLORS/LS_COLORS )
+# Prefer GNU utilities from Homebrew on macOS.
+if [[ "$(uname)" == "Darwin" ]]; then
+  BREW_BIN="/usr/local/bin/brew"
+  if [[ -f "/opt/homebrew/bin/brew" ]]; then
+    BREW_BIN="/opt/homebrew/bin/brew"
+  fi
+
+  if [[ -x "${BREW_BIN}" ]]; then
+    export BREW_PREFIX="$("${BREW_BIN}" --prefix)"
+
+    for bindir in "${BREW_PREFIX}/opt/"*/libexec/gnubin; do
+      [[ -d "${bindir}" ]] && path_prepend "${bindir}"
+    done
+    for bindir in "${BREW_PREFIX}/opt/"*/bin; do
+      [[ -d "${bindir}" ]] && path_prepend "${bindir}"
+    done
+    for mandir in "${BREW_PREFIX}/opt/"*/libexec/gnuman; do
+      [[ -d "${mandir}" ]] && export MANPATH="${mandir}${MANPATH:+:${MANPATH}}"
+    done
+    for mandir in "${BREW_PREFIX}/opt/"*/share/man/man1; do
+      [[ -d "${mandir}" ]] && export MANPATH="${mandir}${MANPATH:+:${MANPATH}}"
+    done
+  fi
+fi
+
+# dircolors (Linux) / gdircolors (macOS via coreutils)
+if command -v dircolors >/dev/null 2>&1; then
+  eval $(dircolors ~/.dotfiles/LS_COLORS/LS_COLORS)
+elif command -v gdircolors >/dev/null 2>&1; then
+  eval $(gdircolors ~/.dotfiles/LS_COLORS/LS_COLORS)
+fi
 
 # fd find replacement options
 export FD_OPTIONS="--follow --exclude .git"
@@ -25,7 +54,9 @@ export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
 export BAT_PAGER="less -R"
 
 # CHROOT for AUR
-export CHROOT=/home/catalin/work/arch/chroot
+if [[ "$(uname)" != "Darwin" ]]; then
+  export CHROOT="${HOME}/work/arch/chroot"
+fi
 
 # FIX for missing VAAPI driver
 # export LIBVA_DRIVER_NAME=vdpau

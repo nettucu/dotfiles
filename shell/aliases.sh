@@ -1,8 +1,10 @@
 # vim: ft=zsh sw=2 ts=2 sts=2 et
 if command -v lsd >/dev/null 2>&1; then
   alias ls='lsd --group-directories-first -F'
-else
+elif ls --group-directories-first / >/dev/null 2>&1; then
   alias ls='ls --group-directories-first --color=auto -F'
+else
+  alias ls='ls -GF'
 fi
 
 alias l='ls -l'

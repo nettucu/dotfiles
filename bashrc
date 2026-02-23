@@ -57,7 +57,7 @@ complete -f -F _dotnet_bash_complete dotnet
 export PATH="$PATH:$HOME/.rvm/bin"
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/home/catalin/.lmstudio/bin"
+[[ -f "${HOME}/.lmstudio/bin/lms" ]] && export PATH="$PATH:${HOME}/.lmstudio/bin"
 # End of LM Studio CLI section
 
 if [[ -f "${HOME}/.local/bin/env" ]]; then
