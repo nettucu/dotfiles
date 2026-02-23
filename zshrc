@@ -23,14 +23,13 @@ zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_dsa' 'id_rsa_github_ctr
 
 antidote load ${HOME}/.dotfiles/zsh_plugins.txt
 
-if [[ -f /etc/os-release ]]; then
+os="$( uname )"
+if [[ ${os} == "Linux" ]]; then
   osrel="$(grep '^ID=' /etc/os-release | cut -d'=' -f2)"
   case ${osrel} in
     arch)   eval "$(antidote bundle sorin-ionescu/prezto path:modules/pacman)" ;;
     fedora) eval "$(antidote bundle sorin-ionescu/prezto path:modules/dnf)" ;;
   esac
-elif [[ "$(uname)" == "Darwin" ]]; then
-  eval "$(antidote bundle sorin-ionescu/prezto path:modules/homebrew)"
 fi
 
 source ~/.dotfiles/shell/aliases.sh

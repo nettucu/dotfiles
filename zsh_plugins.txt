@@ -43,5 +43,6 @@ sorin-ionescu/prezto path:modules/completion
 sorin-ionescu/prezto path:modules/docker
 sorin-ionescu/prezto path:modules/python
 sorin-ionescu/prezto path:modules/ssh
+sorin-ionescu/prezto path:modules/homebrew
 
 # vi: ft=properties
