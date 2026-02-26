@@ -3,13 +3,6 @@ source ~/.dotfiles/shell/functions.sh
 
 source ~/.dotfiles/shell/env.sh
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  # source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
 export ANTIDOTE_HOME=~/.dotfiles/antidote
 source "${ANTIDOTE_HOME}/antidote.zsh"
 
@@ -22,6 +15,11 @@ zstyle ':prezto:module:python:conda' initialize 'off'
 zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_dsa' 'id_rsa_github_ctrifu' 'id_rsa_dentrix.ro' 'id_ed25519_github_ctrifu'
 
 antidote load ${HOME}/.dotfiles/zsh_plugins.txt
+
+# Override Zephyr/Prezto history settings to share history between sessions.
+setopt share_history
+setopt append_history
+setopt inc_append_history
 
 os="$( uname )"
 if [[ ${os} == "Linux" ]]; then
@@ -53,9 +51,6 @@ if [[ -f /opt/google-cloud-cli/completion.zsh.inc ]]; then
 fi
 
 compctl -K _dotnet_zsh_complete dotnet
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 eval "$( starship init zsh )"
 

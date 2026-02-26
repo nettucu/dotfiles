@@ -9,25 +9,20 @@ export VISUAL="${EDITOR}"
 
 # Prefer GNU utilities from Homebrew on macOS.
 if [[ "$(uname)" == "Darwin" ]]; then
-  BREW_BIN="/usr/local/bin/brew"
-  if [[ -f "/opt/homebrew/bin/brew" ]]; then
-    BREW_BIN="/opt/homebrew/bin/brew"
+  if [[ -d "/opt/homebrew" ]]; then
+    export BREW_PREFIX="/opt/homebrew"
+  elif [[ -d "/usr/local" && -x "/usr/local/bin/brew" ]]; then
+    export BREW_PREFIX="/usr/local"
   fi
 
-  if [[ -x "${BREW_BIN}" ]]; then
-    export BREW_PREFIX="$("${BREW_BIN}" --prefix)"
-
-    for bindir in "${BREW_PREFIX}/opt/"*/libexec/gnubin; do
-      [[ -d "${bindir}" ]] && path_prepend "${bindir}"
-    done
-    for bindir in "${BREW_PREFIX}/opt/"*/bin; do
-      [[ -d "${bindir}" ]] && path_prepend "${bindir}"
-    done
-    for mandir in "${BREW_PREFIX}/opt/"*/libexec/gnuman; do
-      [[ -d "${mandir}" ]] && export MANPATH="${mandir}${MANPATH:+:${MANPATH}}"
-    done
-    for mandir in "${BREW_PREFIX}/opt/"*/share/man/man1; do
-      [[ -d "${mandir}" ]] && export MANPATH="${mandir}${MANPATH:+:${MANPATH}}"
+  if [[ -n "${BREW_PREFIX}" ]]; then
+    # GNU utilities - only prepend if they exist.
+    # We only target known GNU utility packages to avoid slow loops.
+    for pkg in coreutils findutils gnu-sed gnu-tar grep; do
+      gnubin="${BREW_PREFIX}/opt/${pkg}/libexec/gnubin"
+      [[ -d "${gnubin}" ]] && path_prepend "${gnubin}"
+      gnuman="${BREW_PREFIX}/opt/${pkg}/libexec/gnuman"
+      [[ -d "${gnuman}" ]] && export MANPATH="${gnuman}${MANPATH:+:${MANPATH}}"
     done
   fi
 fi
@@ -63,13 +58,7 @@ fi
 
 # ansible python argcomplet
 if command -v register-python-argcomplete >/dev/null 2>&1 ; then
-  eval $(register-python-argcomplete ansible)
-  eval $(register-python-argcomplete ansible-config)
-  eval $(register-python-argcomplete ansible-console)
-  eval $(register-python-argcomplete ansible-doc)
-  eval $(register-python-argcomplete ansible-galaxy)
-  eval $(register-python-argcomplete ansible-inventory)
-  eval $(register-python-argcomplete ansible-playbook)
-  eval $(register-python-argcomplete ansible-pull)
-  eval $(register-python-argcomplete ansible-vault)
+  for cmd in ansible ansible-config ansible-console ansible-doc ansible-galaxy ansible-inventory ansible-playbook ansible-pull ansible-vault; do
+    eval "$(register-python-argcomplete ${cmd})"
+  done
 fi
