@@ -2,5 +2,8 @@
 # Keep machine-specific overrides in ~/.config/chezmoi/chezmoi.toml.
 {{- $role := promptStringOnce . "role" "Machine role [workstation/server]" -}}
 
+[chezmoi]
+  sourceDir = {{ .chezmoi.sourceDir | quote }}
+
 [data]
   role = {{ $role | quote }}
