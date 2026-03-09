@@ -17,7 +17,7 @@ else
 fi
 
 # ── AUR packages (workstation only) ──────────────────────────────────────────
-{{ if eq .role "workstation" -}}
+{{ if eq (index . "role" | default "server") "workstation" -}}
 {{ $pkgs := .linux.aur.packages -}}
 {{ if $pkgs -}}
 aur_packages=(

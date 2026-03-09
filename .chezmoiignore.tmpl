@@ -2,7 +2,7 @@
 README.md
 tests
 
-{{- $role := .role | default "server" -}}
+{{- $role := index . "role" | default "server" -}}
 {{- if eq .chezmoi.os "windows" }}
 .bash_profile
 .bashrc
