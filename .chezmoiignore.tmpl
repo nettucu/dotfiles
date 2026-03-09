@@ -1,3 +1,7 @@
+# Repo meta-files — never deploy to home directory.
+README.md
+tests
+
 {{- $role := .role | default "server" -}}
 {{- if eq .chezmoi.os "windows" }}
 .bash_profile
