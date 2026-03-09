@@ -34,11 +34,6 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliases.sh"
 
 source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/path.sh"
 
-# source Node.js nvm stuff if needed
-if [[ -r /usr/share/nvm/init-nvm.sh ]]; then
-    source /usr/share/nvm/init-nvm.sh
-fi
-
 _dotnet_zsh_complete()
 {
     local completions=("$(dotnet complete "$words")")
@@ -76,8 +71,7 @@ fi
 [[ -d "${HOME}/.opencode/bin" ]] && export PATH="${HOME}/.opencode/bin:$PATH"
 
 # clawdock
-# source ~/.clawdock/clawdock-helpers.sh
-# export CLAWDOCK_DIR=${HOME}/work/openclaw
+[[ -f ~/.clawdock/clawdock-helpers.sh ]] && source ~/.clawdock/clawdock-helpers.sh && export CLAWDOCK_DIR=${HOME}/work/openclaw
 
 if [[ -f ${HOME}/.local/bin/env ]]; then
     source "${HOME}/.local/bin/env"
