@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Linux package bootstrap:
+#   1. Install fnm to ~/.local/bin (all roles).
+#   2. Install AUR packages via paru or yay (workstation only).
+
+set -euo pipefail
+
+# ── fnm ──────────────────────────────────────────────────────────────────────
+
+if command -v fnm >/dev/null 2>&1; then
+  echo "fnm already installed at $(command -v fnm), skipping."
+else
+  echo "Installing fnm..."
+  curl -fsSL https://fnm.vercel.app/install | bash -s -- \
+    --install-dir "${HOME}/.local/bin" \
+    --skip-shell
+fi
+
+# ── AUR packages (workstation only) ──────────────────────────────────────────
+{{ if eq .role "workstation" -}}
+{{ $pkgs := .linux.aur.packages -}}
+{{ if $pkgs -}}
+aur_packages=(
+{{- range $pkgs }}
+  {{ . }}
+{{- end }}
+)
+
+if command -v paru >/dev/null 2>&1; then
+  aur_cmd=paru
+elif command -v yay >/dev/null 2>&1; then
+  aur_cmd=yay
+else
+  echo "WARNING: no AUR helper found (paru or yay). Skipping AUR packages:" >&2
+  printf '  %s\n' "${aur_packages[@]}" >&2
+  echo "Install paru (https://github.com/Morganamilo/paru) then re-run chezmoi apply." >&2
+  exit 0
+fi
+
+echo "Installing AUR packages via ${aur_cmd}..."
+"${aur_cmd}" -S --needed --noconfirm "${aur_packages[@]}"
+{{ end -}}
+{{ end -}}

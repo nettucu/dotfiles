@@ -1,0 +1,17 @@
+$ErrorActionPreference = 'Stop'
+
+$explorerAdvanced = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced'
+
+{{- if .windows.safe_defaults.show_file_extensions }}
+Set-ItemProperty -Path $explorerAdvanced -Name HideFileExt -Type DWord -Value 0
+{{- end }}
+{{- if .windows.safe_defaults.show_hidden_files }}
+Set-ItemProperty -Path $explorerAdvanced -Name Hidden -Type DWord -Value 1
+{{- end }}
+{{- if .windows.safe_defaults.show_protected_os_files }}
+Set-ItemProperty -Path $explorerAdvanced -Name ShowSuperHidden -Type DWord -Value 1
+{{- else }}
+Set-ItemProperty -Path $explorerAdvanced -Name ShowSuperHidden -Type DWord -Value 0
+{{- end }}
+
+Write-Host 'Updated Explorer defaults. Sign out or restart Explorer for all changes to appear.'

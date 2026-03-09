@@ -1,9 +1,9 @@
 # vim: ft=zsh sw=4
-source ~/.dotfiles/shell/functions.sh
+source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/functions.sh"
 
-source ~/.dotfiles/shell/env.sh
+source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/env.sh"
 
-export ANTIDOTE_HOME=~/.dotfiles/antidote
+export ANTIDOTE_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/antidote"
 source "${ANTIDOTE_HOME}/antidote.zsh"
 
 zstyle ':antidote:bundle' use-friendly-names 'yes'
@@ -14,7 +14,7 @@ zstyle ':prezto:module:python:virtualenv' initialize 'off'
 zstyle ':prezto:module:python:conda' initialize 'off'
 zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_dsa' 'id_rsa_github_ctrifu' 'id_rsa_dentrix.ro' 'id_ed25519_github_ctrifu'
 
-antidote load ${HOME}/.dotfiles/zsh_plugins.txt
+antidote load "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/plugins.txt"
 
 # Override Zephyr/Prezto history settings to share history between sessions.
 setopt share_history
@@ -30,9 +30,9 @@ if [[ ${os} == "Linux" ]]; then
   esac
 fi
 
-source ~/.dotfiles/shell/aliases.sh
+source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliases.sh"
 
-source ~/.dotfiles/shell/path.sh
+source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/path.sh"
 
 # source Node.js nvm stuff if needed
 if [[ -r /usr/share/nvm/init-nvm.sh ]]; then

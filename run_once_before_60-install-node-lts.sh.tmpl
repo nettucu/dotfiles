@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Install Node.js LTS via fnm on any unix system.
+
+set -euo pipefail
+
+# Expand PATH to cover common fnm install locations before fnm env is loaded.
+export PATH="${HOME}/.local/bin:${PATH}"
+
+# macOS: Homebrew puts fnm in the brew prefix.
+if [[ "$(uname)" == "Darwin" ]]; then
+  if [[ -x /opt/homebrew/bin/brew ]]; then
+    export PATH="/opt/homebrew/bin:${PATH}"
+  elif [[ -x /usr/local/bin/brew ]]; then
+    export PATH="/usr/local/bin:${PATH}"
+  fi
+fi
+
+if ! command -v fnm >/dev/null 2>&1; then
+  echo "fnm not found; skipping Node.js LTS install." >&2
+  exit 1
+fi
+
+echo "Installing Node.js LTS..."
+fnm install --lts
+fnm default lts-latest

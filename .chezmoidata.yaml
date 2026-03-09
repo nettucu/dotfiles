@@ -1,0 +1,86 @@
+antidote:
+  repo: https://github.com/mattmc3/antidote.git
+  target_dir: .local/share/antidote
+
+npm:
+  global_packages:
+    - "@anthropic-ai/claude-code"
+    - "@openai/codex"
+    - "@google/gemini-cli"
+
+linux:
+  aur:
+    packages:
+      - antigravity
+      - brave-bin
+  server:
+    apt:
+      packages:
+        - git
+        - curl
+        - neovim
+        - ripgrep
+        - fd-find
+        - bat
+    dnf:
+      packages:
+        - git
+        - curl
+        - neovim
+        - ripgrep
+        - fd-find
+        - bat
+
+macos:
+  brew:
+    casks:
+      - antigravity
+      - brave-browser
+      - claude-code
+      - codex
+      - gcloud-cli
+      - google-chrome
+      - insync
+      - keepassxc
+      - kitty
+    packages:
+      - fnm
+      - git
+      - gh
+      - neovim
+      - starship
+      - bat
+      - fd
+      - lsd
+      - ripgrep
+      - fzf
+      - uv
+      - zsh
+      - awk
+      - btop
+      - gemini-cli
+      - htop
+      - iproute2mac
+      - yubikey-agent
+      - coreutils
+      - findutils
+      - gnu-sed
+      - gnu-tar
+      - grep
+
+windows:
+  package_manager: winget
+  packages:
+    - Git.Git
+    - Microsoft.PowerShell
+    - Microsoft.WindowsTerminal
+    - Neovim.Neovim
+    - BurntSushi.ripgrep.MSVC
+    - sharkdp.fd
+    - Starship.Starship
+    - GitHub.cli
+    - Schniz.fnm
+  safe_defaults:
+    show_file_extensions: true
+    show_hidden_files: true
+    show_protected_os_files: false

@@ -29,9 +29,9 @@ fi
 
 # dircolors (Linux) / gdircolors (macOS via coreutils)
 if command -v dircolors >/dev/null 2>&1; then
-  eval $(dircolors ~/.dotfiles/LS_COLORS/LS_COLORS)
+  eval $(dircolors ${XDG_CONFIG_HOME:-$HOME/.config}/dircolors/LS_COLORS)
 elif command -v gdircolors >/dev/null 2>&1; then
-  eval $(gdircolors ~/.dotfiles/LS_COLORS/LS_COLORS)
+  eval $(gdircolors ${XDG_CONFIG_HOME:-$HOME/.config}/dircolors/LS_COLORS)
 fi
 
 # fd find replacement options

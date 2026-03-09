@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# macOS package bootstrap: install Homebrew, formulae, and casks.
+
+set -euo pipefail
+
+# ── Homebrew ─────────────────────────────────────────────────────────────────
+
+if ! command -v brew >/dev/null 2>&1; then
+  echo "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# ── Formulae ─────────────────────────────────────────────────────────────────
+
+formulae=(
+{{- range .macos.brew.packages }}
+  {{ . }}
+{{- end }}
+)
+
+echo "Installing brew formulae..."
+brew install --quiet "${formulae[@]}"
+
+# ── Casks ─────────────────────────────────────────────────────────────────────
+
+casks=(
+{{- range .macos.brew.casks }}
+  {{ . }}
+{{- end }}
+)
+
+echo "Installing brew casks..."
+brew install --quiet --cask "${casks[@]}"

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Install a minimal set of CLI tools on Linux servers.
+# Detects apt (Ubuntu/Debian) or dnf (Oracle Linux/RHEL/Fedora).
+
+set -euo pipefail
+
+if command -v apt-get >/dev/null 2>&1; then
+  packages=(
+  {{- range .linux.server.apt.packages }}
+    {{ . }}
+  {{- end }}
+  )
+  echo "Installing apt packages..."
+  sudo apt-get update -qq
+  sudo apt-get install -y --no-install-recommends "${packages[@]}"
+
+elif command -v dnf >/dev/null 2>&1; then
+  packages=(
+  {{- range .linux.server.dnf.packages }}
+    {{ . }}
+  {{- end }}
+  )
+  echo "Installing dnf packages..."
+  sudo dnf install -y "${packages[@]}"
+
+else
+  echo "No supported package manager found (apt-get or dnf)." >&2
+  exit 1
+fi

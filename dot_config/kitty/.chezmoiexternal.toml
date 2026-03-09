@@ -1,0 +1,4 @@
+[".kitty-themes"]
+  type = "git-repo"
+  url = "https://github.com/kovidgoyal/kitty-themes.git"
+  refreshPeriod = "720h"

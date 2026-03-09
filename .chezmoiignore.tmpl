@@ -1,0 +1,33 @@
+{{- $role := .role | default "server" -}}
+{{- if eq .chezmoi.os "windows" }}
+.bash_profile
+.bashrc
+.inputrc
+.zshrc
+.config/dircolors/**
+.config/kitty/**
+.config/nvim/**
+.config/shell/**
+.config/zsh/**
+10-install-antidote.sh
+40-linux-packages.sh
+45-server-packages.sh
+50-macos-packages.sh
+60-install-node-lts.sh
+70-install-npm-globals.sh
+{{- else if eq .chezmoi.os "linux" }}
+20-windows-packages.ps1
+30-windows-defaults.ps1
+50-macos-packages.sh
+{{- if eq $role "workstation" }}
+45-server-packages.sh
+{{- else }}
+70-install-npm-globals.sh
+{{- end }}
+{{- else }}
+20-windows-packages.ps1
+30-windows-defaults.ps1
+40-linux-packages.sh
+45-server-packages.sh
+70-install-npm-globals.sh
+{{- end }}

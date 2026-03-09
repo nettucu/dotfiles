@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Install npm global packages via fnm-managed Node.js.
+# Runs after script 60 (node LTS install).
+
+set -euo pipefail
+
+# Ensure fnm and npm are on PATH.
+export PATH="${HOME}/.local/bin:${PATH}"
+eval "$(fnm env --shell bash 2>/dev/null)" || true
+
+if ! command -v npm >/dev/null 2>&1; then
+  echo "npm not found; skipping global package install." >&2
+  exit 1
+fi
+
+packages=(
+{{- range .npm.global_packages }}
+  {{ . }}
+{{- end }}
+)
+
+echo "Installing npm global packages..."
+npm install --global --silent "${packages[@]}"

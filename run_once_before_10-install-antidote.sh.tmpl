@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+target="${XDG_DATA_HOME:-$HOME/.local/share}/antidote"
+repo_url="{{ .antidote.repo }}"
+
+if [[ -d "${target}/.git" ]]; then
+  exit 0
+fi
+
+mkdir -p "$(dirname "${target}")"
+git clone --depth=1 "${repo_url}" "${target}"
