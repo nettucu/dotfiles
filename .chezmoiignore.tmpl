@@ -1,6 +1,9 @@
-# Repo meta-files — never deploy to home directory.
+# Repo meta-files and stale submodule directories — never deploy to home directory.
 README.md
 tests
+antidote
+kitty-themes
+nvim
 
 {{- $role := index . "role" | default "server" -}}
 {{- if eq .chezmoi.os "windows" }}
