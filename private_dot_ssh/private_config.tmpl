@@ -1,0 +1,173 @@
+# vim: ft=sshconfig
+# ~/.ssh/config — managed by chezmoi
+# Source: ~/.dotfiles/private_dot_ssh/private_config.tmpl
+
+# ─── Global defaults ──────────────────────────────────────────────────────────
+Host *
+    HashKnownHosts no
+    ForwardAgent no
+    ForwardX11 no
+    AddressFamily any
+    CheckHostIP no
+    ServerAliveInterval 60
+    ServerAliveCountMax 120
+    Compression yes # disable per host
+    Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com
+    KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellman-group16-sha512
+    ControlMaster auto
+    ControlPath ~/.ssh/sockets/%r@%h:%p
+    ControlPersist 10m
+
+# ─── Personal hosts ───────────────────────────────────────────────────────────
+Host octoprint.local
+    HostName octoprint.local
+    Compression no
+    User pi
+
+Host zeppelin
+    Compression no
+    User catalin
+    ForwardAgent yes
+
+# Home router — needs legacy algorithms
+Host 192.168.1.1
+    Compression no
+    KexAlgorithms +diffie-hellman-group1-sha1
+    Ciphers +3des-cbc
+
+# Local/lab networks — relaxed host checking, legacy algorithm support
+Host 192.168.1.* 192.168.56.* 192.168.57.* *.local
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    CheckHostIP no
+    Compression no
+    PubkeyAcceptedAlgorithms +ssh-rsa
+    HostkeyAlgorithms +ssh-rsa
+
+# ─── GitHub ───────────────────────────────────────────────────────────────────
+{{ if eq .chezmoi.os "darwin" -}}
+# On Oracle VPN the corporate proxy is reachable — use it; otherwise connect directly
+Match host github.com exec "nc -z -w 1 www-proxy-wdc.oracle.com 80 2>/dev/null"
+    ProxyCommand connect-proxy -H www-proxy-wdc.oracle.com:80 %h %p
+
+{{ end -}}
+Host github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_github_ctrifu
+    IdentitiesOnly yes
+
+{{ if eq .chezmoi.os "darwin" -}}
+# ─── Work — Oracle (macOS only) ───────────────────────────────────────────────
+Host orahub.oci.oraclecorp.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_orahub
+    IdentitiesOnly yes
+
+# Lab/test hosts — legacy algorithm support
+Host template* sol* linux* upgr* ol6* ol7* ol8* ol9*
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    CheckHostIP no
+    PubkeyAcceptedAlgorithms +ssh-rsa
+    HostkeyAlgorithms +ssh-rsa
+
+    
+# https://confluence.oraclecorp.com/confluence/display/CSE/Level+3+-+Files+access+details+Redwood+UI
+Host 100.114.195.11
+    MACs hmac-sha2-256,hmac-sha2-512,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,umac-128@openssh.com
+
+Host phxpacmosfmprmt009.cmosfmmtpd1.prodappphxaiv1.oraclevcn.com isde-linux7-1
+    Hostname phxpacmosfmprmt009.cmosfmmtpd1.prodappphxaiv1.oraclevcn.com
+    MACs hmac-sha2-256,hmac-sha2-512,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,umac-128@openssh.com
+    ProxyJump 100.114.195.11
+
+Host phxpacmosfmprmt012.cmosfmmtpd1.prodappphxaiv1.oraclevcn.com isde-linux7-2
+    Hostname phxpacmosfmprmt012.cmosfmmtpd1.prodappphxaiv1.oraclevcn.com
+    MACs hmac-sha2-256,hmac-sha2-512,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,umac-128@openssh.com
+    ProxyJump 100.114.195.11
+
+Host phxpacmosfmprmt010.cmosfmmtpd1.prodappphxaiv1.oraclevcn.com isde-linux8-1
+    Hostname phxpacmosfmprmt010.cmosfmmtpd1.prodappphxaiv1.oraclevcn.com
+    MACs hmac-sha2-256,hmac-sha2-512,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,umac-128@openssh.com
+    ProxyJump 100.114.195.11
+
+Host phxpacmosfmprmt013.cmosfmmtpd1.prodappphxaiv1.oraclevcn.com isde-linux8-2
+    Hostname phxpacmosfmprmt013.cmosfmmtpd1.prodappphxaiv1.oraclevcn.com
+    MACs hmac-sha2-256,hmac-sha2-512,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,umac-128@openssh.com
+    ProxyJump 100.114.195.11
+
+# UAT/core bastions
+# https://confluence.oraclecorp.com/confluence/pages/viewpage.action?spaceKey=CSE&title=MOS+UAT+Bastion+Testing+May+28th+-+31st%2C+2024
+Host pnmobstv0001 pnmobstv0001.us.oracle.com pnmobst
+    Hostname pnmobstv0001.us.oracle.com
+    MACs hmac-sha2-256,hmac-sha2-512,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,umac-128@openssh.com
+
+Host pnmobstv0002 pnmobstv0002.us.oracle.com
+    Hostname pnmobstv0002.us.oracle.com
+    MACs hmac-sha2-256,hmac-sha2-512,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,umac-128@openssh.com
+
+# Core servers via pnmobst bastion
+# cores11u4i — X3-2 ZONE Oracle Solaris 11.4.38.101.6
+Host pnmomz5013.us.oracle.com pnmomz5013 cores11u4i
+    Hostname pnmomz5013.us.oracle.com
+    ProxyJump pnmobst
+
+# cores10i — X3-2 ZONE Oracle Solaris 10
+Host pnmomz5016.us.oracle.com pnmomz5016 cores10i
+    Hostname pnmomz5016.us.oracle.com
+    ProxyJump pnmobst
+    HostKeyAlgorithms +ssh-rsa
+
+# cores11u4s — T4-2 ZONE Oracle Solaris 11.4.38.101.6
+Host pnmomz5019.us.oracle.com pnmomz5019 cores11u4s
+    Hostname pnmomz5019.us.oracle.com
+    ProxyJump pnmobst
+
+Host pnmomz5022.us.oracle.com pnmomz5022 cores11u4s
+    Hostname pnmomz5022.us.oracle.com
+    ProxyJump pnmobst
+
+# cores10s — T4-2 ZONE Oracle Solaris 10
+Host pnmomz5025.us.oracle.com pnmomz5025 cores10s
+    Hostname pnmomz5025.us.oracle.com
+    ProxyJump pnmobst
+    HostKeyAlgorithms +ssh-rsa
+
+# corel6 — Enterprise Linux 6
+Host pnmomv4042.us.oracle.com pnmomv4042 corel6
+    Hostname pnmomv4042.us.oracle.com
+    ProxyJump pnmobst
+
+# corel7 — Enterprise Linux 7
+Host pnmomv4202.us.oracle.com pnmomv4202 corel7
+    Hostname pnmomv4202.us.oracle.com
+    MACs hmac-sha2-256,hmac-sha2-512,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,umac-128@openssh.com
+    ProxyJump pnmobst
+
+# Production ISDE (MOS Customer File Management — Doc ID 2833021.2)
+# https://mysites.oracle.com/Oracle-Support-News-Portal/support-connection-article/mos-bastion-access-to-the-isde-going-live-on-june-23,-2025
+Host phx-mos-bastion.us.oracle.com bastion-prod
+    Hostname phx-mos-bastion.us.oracle.com
+    HostKeyAlgorithms +ssh-rsa
+    MACs hmac-sha2-256,hmac-sha2-512,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,umac-128@openssh.com
+
+Host ppmomv0027.us.oracle.com ppmomv0027
+    Hostname ppmomv0027.us.oracle.com
+    MACs hmac-sha2-256,hmac-sha2-512,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,umac-128@openssh.com
+    ProxyJump bastion-prod
+
+Host ppmomv0029.us.oracle.com ppmomv0029
+    Hostname ppmomv0029.us.oracle.com
+    MACs hmac-sha2-256,hmac-sha2-512,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,umac-128@openssh.com
+    ProxyJump bastion-prod
+
+Host ppmomv0031.us.oracle.com ppmomv0031
+    Hostname ppmomv0031.us.oracle.com
+    MACs hmac-sha2-256,hmac-sha2-512,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,umac-128@openssh.com
+    ProxyJump bastion-prod
+
+Host ppmomv0033.us.oracle.com ppmomv0033
+    Hostname ppmomv0033.us.oracle.com
+    MACs hmac-sha2-256,hmac-sha2-512,hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,umac-128@openssh.com
+    ProxyJump bastion-prod
+{{- end }}
