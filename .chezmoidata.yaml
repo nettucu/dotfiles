@@ -9,6 +9,9 @@ npm:
     - "@google/gemini-cli"
 
 linux:
+  pacman:
+    packages:
+      - age
   aur:
     packages:
       - antigravity
@@ -46,6 +49,7 @@ macos:
       - nimble-commander
       - visual-studio-code
     packages:
+      - age
       - fnm
       - git
       - gh

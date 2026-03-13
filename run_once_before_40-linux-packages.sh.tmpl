@@ -16,6 +16,23 @@ else
     --skip-shell
 fi
 
+# ── pacman packages (workstation only) ───────────────────────────────────────
+{{ if eq (index . "role" | default "server") "workstation" -}}
+{{ $pkgs := .linux.pacman.packages -}}
+{{ if $pkgs -}}
+pacman_packages=(
+{{- range $pkgs }}
+  {{ . }}
+{{- end }}
+)
+
+if command -v pacman >/dev/null 2>&1; then
+  echo "Installing pacman packages..."
+  sudo pacman -S --needed --noconfirm "${pacman_packages[@]}"
+fi
+{{ end -}}
+{{ end -}}
+
 # ── AUR packages (workstation only) ──────────────────────────────────────────
 {{ if eq (index . "role" | default "server") "workstation" -}}
 {{ $pkgs := .linux.aur.packages -}}
