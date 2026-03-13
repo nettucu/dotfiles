@@ -1,9 +1,8 @@
 # Repository-provided chezmoi defaults.
 # Keep machine-specific overrides in ~/.config/chezmoi/chezmoi.toml.
 {{- $role := promptStringOnce . "role" "Machine role [workstation/server]" -}}
+{{- $ageRecipient := promptStringOnce . "ageRecipient" "Age public key (recipient, leave blank if unknown)" -}}
 
-
-### Set encryption to age and hope the file doesn't get screwed
 encryption = "age"
 
 [chezmoi]
@@ -11,6 +10,8 @@ encryption = "age"
 
 [data]
   role = {{ $role | quote }}
+  ageRecipient = {{ $ageRecipient | quote }}
 
 [age]
   identity = "~/.config/age/key.txt"
+  recipient = {{ $ageRecipient | quote }}
