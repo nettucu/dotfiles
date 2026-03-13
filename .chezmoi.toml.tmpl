@@ -2,8 +2,13 @@
 # Keep machine-specific overrides in ~/.config/chezmoi/chezmoi.toml.
 {{- $role := promptStringOnce . "role" "Machine role [workstation/server]" -}}
 
+encryption = "age"
+
 [chezmoi]
   sourceDir = {{ .chezmoi.sourceDir | quote }}
 
 [data]
   role = {{ $role | quote }}
+
+[age]
+  identity = "~/.config/age/key.txt"
