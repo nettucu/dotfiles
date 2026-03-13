@@ -17,6 +17,15 @@ zstyle ':plugin:ez-compinit' 'compstyle' 'prez'
 
 antidote load "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/plugins.txt"
 
+# ansible completions — must run after antidote (needs compdef)
+if command -v register-python-argcomplete >/dev/null 2>&1; then
+  for _cmd in ansible ansible-config ansible-console ansible-doc ansible-galaxy \
+               ansible-inventory ansible-playbook ansible-pull ansible-vault; do
+    eval "$(register-python-argcomplete ${_cmd})"
+  done
+  unset _cmd
+fi
+
 # Override Zephyr/Prezto history settings to share history between sessions.
 setopt share_history
 setopt append_history

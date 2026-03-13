@@ -55,10 +55,3 @@ fi
 
 # FIX for missing VAAPI driver
 # export LIBVA_DRIVER_NAME=vdpau
-
-# ansible python argcomplet
-if command -v register-python-argcomplete >/dev/null 2>&1 ; then
-  for cmd in ansible ansible-config ansible-console ansible-doc ansible-galaxy ansible-inventory ansible-playbook ansible-pull ansible-vault; do
-    eval "$(register-python-argcomplete ${cmd})"
-  done
-fi

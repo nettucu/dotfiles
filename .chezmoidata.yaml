@@ -43,6 +43,8 @@ macos:
       - insync
       - keepassxc
       - kitty
+      - nimble-commander
+      - visual-studio-code
     packages:
       - fnm
       - git
