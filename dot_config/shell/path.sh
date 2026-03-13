@@ -5,6 +5,10 @@ path_prepend "${HOME}/.local/bin"
 [[ -d /opt/android-sdk-linux/platform-tools ]] && path_prepend /opt/android-sdk-linux/platform-tools
 path_prepend "${HOME}/.dotnet/tools"
 
+if [[ "$(uname)" == "Darwin" ]]; then
+  [[ -d "${HOME}/.antigravity/antigravity/bin" ]] && path_prepend "${HOME}/.antigravity/antigravity/bin/antigravity"
+fi
+
 if [[ -d /opt/scripts ]]; then
   if command -v gfind >/dev/null 2>&1; then
     find_cmd="gfind"
