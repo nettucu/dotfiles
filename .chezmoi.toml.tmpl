@@ -1,7 +1,7 @@
 # Repository-provided chezmoi defaults.
 # Keep machine-specific overrides in ~/.config/chezmoi/chezmoi.toml.
-{{- $role := promptStringOnce . "role" "Machine role [workstation/server]" -}}
-{{- $ageRecipient := promptStringOnce . "ageRecipient" "Age public key (recipient, leave blank if unknown)" -}}
+{{- $role := promptStringOnce . "role" "Machine role [workstation/server]" }}
+{{- $ageRecipient := promptStringOnce . "ageRecipient" "Age public key (recipient, leave blank if unknown)" }}
 
 encryption = "age"
 
