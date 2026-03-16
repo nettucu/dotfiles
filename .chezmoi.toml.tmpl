@@ -4,9 +4,7 @@
 {{- $ageRecipient := promptStringOnce . "ageRecipient" "Age public key (recipient, leave blank if unknown)" }}
 
 encryption = "age"
-
-[chezmoi]
-  sourceDir = {{ .chezmoi.sourceDir | quote }}
+sourceDir = {{ .chezmoi.sourceDir | quote }}
 
 [data]
   role = {{ $role | quote }}
