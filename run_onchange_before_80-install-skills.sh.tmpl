@@ -12,5 +12,19 @@ if ! command -v npx >/dev/null 2>&1; then
   exit 0
 fi
 
-echo "Restoring skills from lock file..."
-npx skills experimental_install
+echo "Installing global skills from lock file..."
+python3 -c "
+import json, os, subprocess
+from collections import defaultdict
+
+lock = os.path.expanduser('~/.local/state/skills/.skill-lock.json')
+data = json.load(open(lock))
+
+by_source = defaultdict(list)
+for skill, info in data['skills'].items():
+    by_source[info['source']].append(skill)
+
+for source, skills in by_source.items():
+    print(f'  {source}: {chr(44).join(skills)}', flush=True)
+    subprocess.run(['npx', 'skills', 'add', '-g', source, '--skill'] + skills + ['-y'], check=True)
+"
