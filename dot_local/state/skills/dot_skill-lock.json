@@ -1,0 +1,262 @@
+{
+  "version": 3,
+  "skills": {
+    "code-review-excellence": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/developer-essentials/skills/code-review-excellence/SKILL.md",
+      "skillFolderHash": "01df909b77da6e637490582b2899447eed1786bd",
+      "installedAt": "2026-02-21T19:16:16.012Z",
+      "updatedAt": "2026-03-17T14:07:44.610Z"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "3013fdeb8a11b10b1eb795ec3ae8bfca38f7c26d",
+      "installedAt": "2026-02-21T19:16:25.665Z",
+      "updatedAt": "2026-03-17T14:07:46.857Z"
+    },
+    "brainstorming": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/brainstorming/SKILL.md",
+      "skillFolderHash": "fe653626a6e2da69d1ece00bb04c56fce6ab310e",
+      "installedAt": "2026-02-25T16:02:56.287Z",
+      "updatedAt": "2026-03-17T14:07:49.219Z"
+    },
+    "dispatching-parallel-agents": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/dispatching-parallel-agents/SKILL.md",
+      "skillFolderHash": "ebd0490e6b0bccfdb9f9c0cc9dd6a066036c8d89",
+      "installedAt": "2026-02-25T16:02:56.335Z",
+      "updatedAt": "2026-03-17T14:07:51.383Z"
+    },
+    "executing-plans": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/executing-plans/SKILL.md",
+      "skillFolderHash": "20087d25fb28f5f54578d873dc198ab24b34f967",
+      "installedAt": "2026-02-25T16:02:56.382Z",
+      "updatedAt": "2026-03-17T14:07:53.418Z"
+    },
+    "finishing-a-development-branch": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/finishing-a-development-branch/SKILL.md",
+      "skillFolderHash": "7656b8ebe0c9659ea548ba2981b078b333d1846e",
+      "installedAt": "2026-02-25T16:02:56.429Z",
+      "updatedAt": "2026-02-25T16:02:56.429Z"
+    },
+    "receiving-code-review": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/receiving-code-review/SKILL.md",
+      "skillFolderHash": "7750c56fddb8b2f1cbdb1550a6e3e40d2eeac5f1",
+      "installedAt": "2026-02-25T16:02:56.475Z",
+      "updatedAt": "2026-02-25T16:02:56.475Z"
+    },
+    "requesting-code-review": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/requesting-code-review/SKILL.md",
+      "skillFolderHash": "ed265b1a03114cc400d5524afc5c961a4aa9ea8b",
+      "installedAt": "2026-02-25T16:02:56.522Z",
+      "updatedAt": "2026-03-17T14:07:55.788Z"
+    },
+    "subagent-driven-development": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/subagent-driven-development/SKILL.md",
+      "skillFolderHash": "fbcd94ffcf589754a8ecfa59861cc8843313590e",
+      "installedAt": "2026-02-25T16:02:56.568Z",
+      "updatedAt": "2026-03-17T14:07:57.948Z"
+    },
+    "systematic-debugging": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/systematic-debugging/SKILL.md",
+      "skillFolderHash": "828c239ac986cc1fc7edd10292f66e4a3640e9c0",
+      "installedAt": "2026-02-25T16:02:56.615Z",
+      "updatedAt": "2026-02-25T16:02:56.615Z"
+    },
+    "test-driven-development": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/test-driven-development/SKILL.md",
+      "skillFolderHash": "98904a7d8e0e04b9bd46220b9b17298f45fe0b72",
+      "installedAt": "2026-02-25T16:02:56.662Z",
+      "updatedAt": "2026-02-25T16:02:56.662Z"
+    },
+    "using-superpowers": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/using-superpowers/SKILL.md",
+      "skillFolderHash": "7569e98e26e69d0cc0b16da7ea4c30f48e94ca02",
+      "installedAt": "2026-02-25T16:02:56.708Z",
+      "updatedAt": "2026-03-17T14:08:00.091Z"
+    },
+    "writing-plans": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/writing-plans/SKILL.md",
+      "skillFolderHash": "2a472929552ca56aa3bb27a95ecff3e606af5792",
+      "installedAt": "2026-02-25T16:02:56.755Z",
+      "updatedAt": "2026-03-17T14:08:02.209Z"
+    },
+    "writing-skills": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/writing-skills/SKILL.md",
+      "skillFolderHash": "657cdd6aef472054ffd3f0e7798494d79be9f807",
+      "installedAt": "2026-02-25T16:02:56.801Z",
+      "updatedAt": "2026-02-25T16:02:56.801Z"
+    },
+    "verification-before-completion": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/verification-before-completion/SKILL.md",
+      "skillFolderHash": "ceb2f1f67f4cadb29b32a06e54d3d0be832071f5",
+      "installedAt": "2026-02-25T16:02:56.847Z",
+      "updatedAt": "2026-02-25T16:02:56.847Z"
+    },
+    "using-git-worktrees": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/using-git-worktrees/SKILL.md",
+      "skillFolderHash": "a5b3f5965f321175a7f07dcadff0bb79adb9e9f7",
+      "installedAt": "2026-02-25T16:02:56.893Z",
+      "updatedAt": "2026-02-25T16:02:56.893Z"
+    },
+    "python-anti-patterns": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/python-development/skills/python-anti-patterns/SKILL.md",
+      "skillFolderHash": "bfd45644a6e9c35c2cd94cf3bc1ba74ab46b2792",
+      "installedAt": "2026-02-25T17:18:52.389Z",
+      "updatedAt": "2026-02-25T17:18:52.389Z"
+    },
+    "async-python-patterns": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/python-development/skills/async-python-patterns/SKILL.md",
+      "skillFolderHash": "0a3bbf201d38ac29d14b38b1b3417f73bddc7c24",
+      "installedAt": "2026-02-25T17:18:52.467Z",
+      "updatedAt": "2026-03-17T14:08:04.999Z"
+    },
+    "python-configuration": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/python-development/skills/python-configuration/SKILL.md",
+      "skillFolderHash": "cbdb6fd72a93b47e677909e9a2fb07cdc16b24f8",
+      "installedAt": "2026-02-25T17:18:52.519Z",
+      "updatedAt": "2026-02-25T17:18:52.519Z"
+    },
+    "python-error-handling": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/python-development/skills/python-error-handling/SKILL.md",
+      "skillFolderHash": "cb6c9295d57491f5eeefc2d1469d10f12d06b951",
+      "installedAt": "2026-02-25T17:18:52.571Z",
+      "updatedAt": "2026-02-25T17:18:52.571Z"
+    },
+    "python-project-structure": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/python-development/skills/python-project-structure/SKILL.md",
+      "skillFolderHash": "70109b96fb8e73142730844acd8e6ffe125a2139",
+      "installedAt": "2026-02-25T17:18:52.630Z",
+      "updatedAt": "2026-02-25T17:18:52.630Z"
+    },
+    "python-resilience": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/python-development/skills/python-resilience/SKILL.md",
+      "skillFolderHash": "656b9d366a9a7676008233b13f3cd7eac0b20a16",
+      "installedAt": "2026-02-25T17:18:52.682Z",
+      "updatedAt": "2026-02-25T17:18:52.682Z"
+    },
+    "python-resource-management": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/python-development/skills/python-resource-management/SKILL.md",
+      "skillFolderHash": "ae87af5edcc71fe411e50fd62679f37e0ff08250",
+      "installedAt": "2026-02-25T17:18:52.734Z",
+      "updatedAt": "2026-02-25T17:18:52.734Z"
+    },
+    "python-testing-patterns": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/python-development/skills/python-testing-patterns/SKILL.md",
+      "skillFolderHash": "140f6ed7fce2674577596463de07e4565fe68510",
+      "installedAt": "2026-02-25T17:18:52.785Z",
+      "updatedAt": "2026-03-17T14:08:07.267Z"
+    },
+    "python-type-safety": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/python-development/skills/python-type-safety/SKILL.md",
+      "skillFolderHash": "c8c8954c9a3dd5007962247d137a810cd8c3fede",
+      "installedAt": "2026-02-25T17:18:52.838Z",
+      "updatedAt": "2026-02-25T17:18:52.838Z"
+    },
+    "python-design-patterns": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/python-development/skills/python-design-patterns/SKILL.md",
+      "skillFolderHash": "e2ce27f3e5cbb20bf959ab382c76d50e5d76a444",
+      "installedAt": "2026-02-25T17:18:52.889Z",
+      "updatedAt": "2026-02-25T17:18:52.889Z"
+    },
+    "karpathy-guidelines": {
+      "source": "forrestchang/andrej-karpathy-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/forrestchang/andrej-karpathy-skills.git",
+      "skillPath": "skills/karpathy-guidelines/SKILL.md",
+      "skillFolderHash": "e119339197d600aa39a24fd7a95c946800c9c949",
+      "installedAt": "2026-02-25T17:43:55.955Z",
+      "updatedAt": "2026-02-25T17:43:55.955Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "github-copilot",
+    "kimi-cli",
+    "opencode",
+    "antigravity",
+    "claude-code"
+  ]
+}
