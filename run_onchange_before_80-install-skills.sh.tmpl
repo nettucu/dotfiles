@@ -26,5 +26,7 @@ for skill, info in data['skills'].items():
 
 for source, skills in by_source.items():
     print(f'  {source}: {chr(44).join(skills)}', flush=True)
-    subprocess.run(['npx', 'skills', 'add', '-g', source, '--skill'] + skills + ['-y'], check=True)
+    agents = ['claude-code', 'codex', 'gemini-cli', 'antigravity']
+    agent_flags = [flag for a in agents for flag in ('-a', a)]
+    subprocess.run(['npx', 'skills', 'add', '-g', source, '--skill'] + skills + agent_flags + ['-y'], check=True)
 "
