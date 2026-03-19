@@ -10,6 +10,15 @@ if ! command -v brew >/dev/null 2>&1; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
+# ── cship ─────────────────────────────────────────────────────────────────────
+
+if command -v cship >/dev/null 2>&1; then
+  echo "cship already installed at $(command -v cship), skipping."
+else
+  echo "Installing cship..."
+  curl -fsSL https://cship.dev/install.sh | bash
+fi
+
 # ── Formulae ─────────────────────────────────────────────────────────────────
 
 formulae=(

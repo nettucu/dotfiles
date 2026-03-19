@@ -16,6 +16,15 @@ else
     --skip-shell
 fi
 
+# ── cship ────────────────────────────────────────────────────────────────────
+
+if command -v cship >/dev/null 2>&1; then
+  echo "cship already installed at $(command -v cship), skipping."
+else
+  echo "Installing cship..."
+  curl -fsSL https://cship.dev/install.sh | bash
+fi
+
 # ── pacman packages (workstation only) ───────────────────────────────────────
 {{ if eq (index . "role" | default "server") "workstation" -}}
 {{ $pkgs := .linux.pacman.packages -}}
