@@ -1,8 +1,13 @@
 # vim: ft=sshconfig
-# ~/.ssh/config — managed by chezmoi
+# ~/.ssh/config - managed by chezmoi
 # Source: ~/.dotfiles/private_dot_ssh/private_config.tmpl
 
-# ─── Global defaults ──────────────────────────────────────────────────────────
+{{ if eq .chezmoi.os "darwin" -}}
+# Work (macOS only)
+Include ~/.ssh/config_work
+{{- end }}
+
+# Global defaults
 Host *
     HashKnownHosts no
     ForwardAgent no
@@ -15,10 +20,10 @@ Host *
     Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com
     KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellman-group16-sha512
     ControlMaster auto
-    ControlPath ~/.ssh/sockets/%r@%h:%p
+    ControlPath ~/.ssh/sockets/%C
     ControlPersist 10m
 
-# ─── Personal hosts ───────────────────────────────────────────────────────────
+# Personal hosts
 Host octoprint.local
     HostName octoprint.local
     Compression no
@@ -29,13 +34,13 @@ Host zeppelin
     User catalin
     ForwardAgent yes
 
-# Home router — needs legacy algorithms
+# Home router - needs legacy algorithms
 Host 192.168.1.1
     Compression no
     KexAlgorithms +diffie-hellman-group1-sha1
     Ciphers +3des-cbc
 
-# Local/lab networks — relaxed host checking, legacy algorithm support
+# Local/lab networks - relaxed host checking, legacy algorithm support
 Host 192.168.1.* 192.168.56.* 192.168.57.* *.local
     StrictHostKeyChecking no
     UserKnownHostsFile /dev/null
@@ -44,13 +49,8 @@ Host 192.168.1.* 192.168.56.* 192.168.57.* *.local
     PubkeyAcceptedAlgorithms +ssh-rsa
     HostkeyAlgorithms +ssh-rsa
 
-# ─── GitHub ───────────────────────────────────────────────────────────────────
+# GitHub
 Host github.com
     User git
     IdentityFile ~/.ssh/id_ed25519_github_ctrifu
     IdentitiesOnly yes
-
-{{ if eq .chezmoi.os "darwin" -}}
-# ─── Work (macOS only) ────────────────────────────────────────────────────────
-Include ~/.ssh/config_work
-{{- end }}
