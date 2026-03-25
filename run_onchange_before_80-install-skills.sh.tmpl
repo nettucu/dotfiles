@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Restores skills from lock file whenever it changes.
-# hash: {{ include (joinPath .chezmoi.homeDir ".local/state/skills/.skill-lock.json") | sha256sum }}
+# Installs global skills whenever chezmoidata.yaml changes.
+# hash: {{ include (joinPath .chezmoi.sourceDir ".chezmoidata.yaml") | sha256sum }}
 
 set -euo pipefail
 
@@ -12,21 +12,8 @@ if ! command -v npx >/dev/null 2>&1; then
   exit 0
 fi
 
-echo "Installing global skills from lock file..."
-python3 -c "
-import json, os, subprocess
-from collections import defaultdict
-
-lock = os.path.expanduser('~/.local/state/skills/.skill-lock.json')
-data = json.load(open(lock))
-
-by_source = defaultdict(list)
-for skill, info in data['skills'].items():
-    by_source[info['source']].append(skill)
-
-for source, skills in by_source.items():
-    print(f'  {source}: {chr(44).join(skills)}', flush=True)
-    agents = ['claude-code', 'codex', 'gemini-cli', 'antigravity']
-    agent_flags = [flag for a in agents for flag in ('-a', a)]
-    subprocess.run(['npx', 'skills', 'add', '-g', source, '--skill'] + skills + agent_flags + ['-y'], check=True)
-"
+echo "Installing global skills..."
+{{ range $source, $skills := .skills -}}
+echo "  {{ $source }}: {{ join "," $skills }}"
+npx skills add -g {{ $source }} --skill {{ join " " $skills }} -a claude-code -a codex -a gemini-cli -a antigravity -y
+{{ end -}}
