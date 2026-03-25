@@ -123,6 +123,8 @@ skills:
     - frontend-design
   mattnowdev/thinking-partner:
     - thinking-partner
+  garrytan/gstack:
+    - gstack
 
 windows:
   package_manager: winget
