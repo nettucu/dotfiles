@@ -31,3 +31,29 @@ path_prepend() {
         PATH="$1${PATH:+":$PATH"}"
     fi
 }
+
+rename-invoices() {
+    local dry_run=0
+    [[ "$1" == "-n" || "$1" == "--dry-run" ]] && dry_run=1
+
+    bash -c '
+      dry_run=$1; shift
+      count=0
+      for f in *.pdf; do
+        [[ "$f" =~ ^[0-9]{4}\.[0-9]{2}\.[0-9]{2}- ]] && continue
+        if [[ "$f" =~ __([0-9]{2})-([0-9]{2})-([0-9]{4})__ ]]; then
+          new="${BASH_REMATCH[3]}.${BASH_REMATCH[2]}.${BASH_REMATCH[1]}-${f}"
+        elif [[ "$f" =~ __([0-9]{2})_([0-9]{2})_([0-9]{4})\.pdf$ ]]; then
+          new="${BASH_REMATCH[3]}.${BASH_REMATCH[2]}.${BASH_REMATCH[1]}-${f}"
+        else
+          continue
+        fi
+        if [[ "$dry_run" == "1" ]]; then
+          echo "[dry-run] $f  ->  $new"
+        else
+          mv -- "$f" "$new" && ((count++))
+        fi
+      done
+      [[ "$dry_run" == "0" ]] && echo "Renamed $count files."
+    ' _ "$dry_run"
+  }
