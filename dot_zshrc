@@ -107,3 +107,8 @@ if [[ -d ${HOME}/.bun ]]; then
   # bun completions
   [ -s "${HOME}/.bun/_bun" ] && source "/home/catalin/.bun/_bun"
 fi
+
+if [[ $os == "Darwin" ]]; then
+    SQLCLPATH="$(ls -t $(brew --prefix)/Caskroom/sqlcl | head -1)"
+    export PATH="$(brew --prefix)/Caskroom/sqlcl/$SQLCLPATH/sqlcl/bin:$PATH"
+fi

@@ -53,6 +53,7 @@ macos:
       - kitty
       - nimble-commander
       - visual-studio-code
+      - sqlcl
     packages:
       - age
       - fnm
