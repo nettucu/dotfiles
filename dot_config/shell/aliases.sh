@@ -11,7 +11,7 @@ alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
-alias targetcli='sudo docker run --rm -it \
+alias targetcli='sudo podman run --rm -it \
   --privileged \
   --net=host \
   -v /dev:/dev \
