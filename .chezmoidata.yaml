@@ -83,47 +83,6 @@ macos:
       - oven-sh/bun/bun
       - parallel
 
-skills:
-  wshobson/agents:
-    - code-review-excellence
-    - python-anti-patterns
-    - async-python-patterns
-    - python-configuration
-    - python-error-handling
-    - python-project-structure
-    - python-resilience
-    - python-resource-management
-    - python-testing-patterns
-    - python-type-safety
-    - python-design-patterns
-  vercel-labs/skills:
-    - find-skills
-  obra/superpowers:
-    - brainstorming
-    - dispatching-parallel-agents
-    - executing-plans
-    - finishing-a-development-branch
-    - receiving-code-review
-    - requesting-code-review
-    - subagent-driven-development
-    - systematic-debugging
-    - test-driven-development
-    - using-superpowers
-    - writing-plans
-    - writing-skills
-    - verification-before-completion
-    - using-git-worktrees
-  forrestchang/andrej-karpathy-skills:
-    - karpathy-guidelines
-  anthropics/skills:
-    - docx
-    - pdf
-    - pptx
-    - xlsx
-    - frontend-design
-  mattnowdev/thinking-partner:
-    - thinking-partner
-
 windows:
   package_manager: winget
   packages:
