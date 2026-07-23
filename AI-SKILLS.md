@@ -3,10 +3,18 @@
 Skills previously auto-installed via chezmoidata `skills:` block + `run_onchange_before_80-install-skills.sh.tmpl`.
 Install manually with `npx skills add -g <repo> --skill <name> -a claude-code -a codex -a gemini-cli -a antigravity`.
 
-## https://github.com/rtk-ai/rtk
+## <https://github.com/rtk-ai/rtk>
+
 General tool, not skill repo. Rust CLI proxy, cuts LLM token use 60-90% on common dev cmds (git, cargo, test runners) via output filter/compress. Single binary, native support Claude Code + Copilot + Cursor + 12 others.
 
-## https://github.com/wshobson/agents
+## <https://github.com/mattpocock/skills>
+
+## <https://github.com/Chachamaru127/harness-mem>
+
+- Local project memory for AI coding sessions — a continuity runtime for Claude Code, Codex, Cursor, and Hermes.
+
+## <https://github.com/wshobson/agents>
+
 - code-review-excellence
 - python-anti-patterns
 - async-python-patterns
@@ -19,10 +27,12 @@ General tool, not skill repo. Rust CLI proxy, cuts LLM token use 60-90% on commo
 - python-type-safety
 - python-design-patterns
 
-## https://github.com/vercel-labs/skills
+## <https://github.com/vercel-labs/skills>
+
 - find-skills
 
-## https://github.com/obra/superpowers
+## <https://github.com/obra/superpowers>
+
 - brainstorming
 - dispatching-parallel-agents
 - executing-plans
@@ -38,15 +48,18 @@ General tool, not skill repo. Rust CLI proxy, cuts LLM token use 60-90% on commo
 - verification-before-completion
 - using-git-worktrees
 
-## https://github.com/forrestchang/andrej-karpathy-skills
+## <https://github.com/forrestchang/andrej-karpathy-skills>
+
 - karpathy-guidelines
 
-## https://github.com/anthropics/skills
+## <https://github.com/anthropics/skills>
+
 - docx
 - pdf
 - pptx
 - xlsx
 - frontend-design
 
-## https://github.com/mattnowdev/thinking-partner
+## <https://github.com/mattnowdev/thinking-partner>
+
 - thinking-partner
