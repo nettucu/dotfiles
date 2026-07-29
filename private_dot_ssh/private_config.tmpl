@@ -17,6 +17,8 @@ Host *
     ServerAliveInterval 60
     ServerAliveCountMax 120
     Compression yes # disable per host
+    IdentityFile ~/.ssh/id_ed25519.pub
+    IdentitiesOnly yes
     Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com
     KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellman-group16-sha512
     ControlMaster auto
@@ -52,5 +54,5 @@ Host 192.168.1.* 192.168.56.* 192.168.57.* *.local
 # GitHub
 Host github.com
     User git
-    IdentityFile ~/.ssh/id_ed25519_github_ctrifu
+    IdentityFile ~/.ssh/id_ed25519_github_ctrifu.pub
     IdentitiesOnly yes
