@@ -55,3 +55,6 @@ fi
 
 # FIX for missing VAAPI driver
 # export LIBVA_DRIVER_NAME=vdpau
+
+# harness-mee default language
+export HARNESS_MEM_LANG=en
