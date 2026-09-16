@@ -112,3 +112,8 @@ if [[ $os == "Darwin" ]]; then
     SQLCLPATH="$(ls -t $(brew --prefix)/Caskroom/sqlcl | head -1)"
     export PATH="$(brew --prefix)/Caskroom/sqlcl/$SQLCLPATH/sqlcl/bin:$PATH"
 fi
+
+if command -v zoxide; then
+  eval "$(zoxide init zsh)"
+  alias cd='z'
+fi

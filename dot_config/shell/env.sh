@@ -58,3 +58,9 @@ fi
 
 # harness-mee default language
 export HARNESS_MEM_LANG=en
+export HARNESS_MEM_EMBEDDING_EAGER=1
+
+[[ -f ~/.harness-mem/harness-mem.env ]] && source ~/.harness-mem/harness-mem.env
+
+# set sp that the sharp npm pachage ignores the system libvips
+export SHARP_IGNORE_GLOBAL_LIBVIPS=1
