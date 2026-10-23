@@ -63,7 +63,7 @@ rename-invoices() {
 # ---------------------------------------------------------------------------
 _WORK_PROXY="http://www-proxy-wdc.oraclecorp.com:80"
 _WORK_DOMAIN="oracle.com"
-_WORK_NO_PROXY="localhost,127.0.0.1,::1,*.oracle.com,*.oraclecloud.com"
+_WORK_NO_PROXY="localhost,127.0.0.1,::1,.oracle.com,.oraclecloud.com,.oraclecorp.com"
 
 proxy_on() {
     export HTTP_PROXY="$_WORK_PROXY"
