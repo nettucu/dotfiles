@@ -32,7 +32,8 @@ command -v bat >/dev/null 2>&1 && alias cat='bat'
 # if we use kitty as terminal then we want to use the kitty specific aliases
 if [[ "$TERM" = "xterm-kitty" ]]; then
   alias d="kitten diff"
-  alias ssh="kitty +kitten ssh"
+  # plain ssh stays OpenSSH-multiplexed (see ~/.ssh/config); use kssh for terminfo/shell-integration copy
+  alias kssh="kitty +kitten ssh"
   alias icat="kitty +kitten icat"
 fi
 

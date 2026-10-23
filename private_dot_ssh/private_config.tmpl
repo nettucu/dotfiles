@@ -7,6 +7,13 @@
 Include ~/.ssh/config_work
 {{- end }}
 
+# GitHub - must stay above "Host *": ssh uses the first value found per directive
+Host github.com
+    User git
+    ControlMaster no
+    IdentityFile ~/.ssh/id_ed25519_github_ctrifu.pub
+    IdentitiesOnly yes
+
 # Global defaults
 Host *
     HashKnownHosts no
@@ -55,10 +62,3 @@ Host 192.168.1.* 192.168.56.* 192.168.57.* *.local
     Compression no
     PubkeyAcceptedAlgorithms +ssh-rsa
     HostkeyAlgorithms +ssh-rsa
-
-# GitHub
-Host github.com
-    User git
-    ControlMaster no
-    IdentityFile ~/.ssh/id_ed25519_github_ctrifu.pub
-    IdentitiesOnly yes
